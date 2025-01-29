@@ -6,9 +6,15 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import Image from "next/image";
 import { Button } from "./button";
+import { useEffect } from "react";
 function ModeToggle() {
-	const { setTheme, theme } = useTheme();
-
+	const { setTheme, theme, systemTheme } = useTheme();
+	console.log(systemTheme);
+	useEffect(() => {
+		if (systemTheme) {
+			setTheme(systemTheme);
+		}
+	}, []);
 	const spring = {
 		type: "spring",
 		stiffness: 700,
